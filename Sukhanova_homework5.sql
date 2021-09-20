@@ -25,11 +25,11 @@ UPDATE users SET created_at = NOW(), updated_at = NOW();
 
 DROP TABLE IF EXISTS users;
 CREATE TABLE users (
-  id SERIAL,
-  name VARCHAR(255),
-  birthday DATE,
-  created_at VARCHAR(255),
-  updated_at VARCHAR(255)
+	id SERIAL,
+	name VARCHAR(255),
+	birthday DATE,
+	created_at VARCHAR(255),
+	updated_at VARCHAR(255)
 );
 
 INSERT INTO users (name, birthday, created_at, updated_at) VALUES
@@ -41,17 +41,17 @@ INSERT INTO users (name, birthday, created_at, updated_at) VALUES
 	('Тамара', '2019-01-09', '25.09.2021 14:09', '25.09.2021 14:10');
 
 UPDATE users
-SET
-created_at = STR_TO_DATE(created_at, '%d.%m.%Y %k:%i'),
-updated_at = STR_TO_DATE(updated_at, '%d.%m.%Y %k:%i');
+	SET
+	created_at = STR_TO_DATE(created_at, '%d.%m.%Y %k:%i'),
+	updated_at = STR_TO_DATE(updated_at, '%d.%m.%Y %k:%i');
 
 ALTER TABLE users
-CHANGE
-created_at created_at DATETIME DEFAULT NOW();
+	CHANGE
+	created_at created_at DATETIME DEFAULT NOW();
 
 ALTER TABLE users
-CHANGE
-updated_at updated_at DATETIME ON UPDATE CURRENT_TIMESTAMP;
+	CHANGE
+	updated_at updated_at DATETIME ON UPDATE CURRENT_TIMESTAMP;
 
 
 
@@ -63,12 +63,12 @@ CREATE TABLE storehouses_products (
  );
 
 INSERT INTO storehouses_products (storehouse_id, product_id, value) VALUES
-  (1, 1, 0),
-  (1, 2, 2500),
-  (1, 3, 0),
-  (1, 4, 30),
-  (1, 5, 500),
-  (1, 6, 1);
+	(1, 1, 0),
+	(1, 2, 2500),
+	(1, 3, 0),
+	(1, 4, 30),
+	(1, 5, 500),
+	(1, 6, 1);
   
 SELECT value, IF(value > 0, 0, 1) AS `order` FROM storehouses_products ORDER BY value;
 SELECT * FROM storehouses_products ORDER BY IF(value > 0, 0, 1), value;
